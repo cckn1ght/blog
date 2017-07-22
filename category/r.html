@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lee On Coding, My blog about coding and stuff.">
+
+        <link rel="alternate"  href="https://leemendelowitz.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" title="Lee On Coding Full Atom Feed"/>
+
+        <title>R category // Lee On Coding // My blog about coding and stuff.</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://leemendelowitz.github.io/blog/theme/css/pure.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background: none repeat scroll 0% 0% #3D4F5D">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <img class="avatar" src="https://leemendelowitz.github.io/blog//images/avatar.jpeg">
+                            <h1 class="brand-main"><a href="https://leemendelowitz.github.io/blog">Lee On Coding</a></h1>
+                            <p class="tagline">My blog about coding and stuff.</p>
+                                <p class="social">
+                                    <a href="http://twitter.com/lmendy7">
+                                        <i class="fa fa-twitter fa-3x"></i>
+                                    </a>
+                                    <a href="https://github.com/LeeMendelowitz">
+                                        <i class="fa fa-github fa-3x"></i>
+                                    </a>
+                                </p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">
+Posts in 'R'                </h1>
+                    <section class="post">
+                        <header class="post-header">
+                            <h3><a class="post-title" href="https://leemendelowitz.github.io/blog/mathematical-expressions-in-plots.html">Mathematical expressions in plots</a></h3>
+                            <p class="post-meta"><p><a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/plotmath.rmd">Download as R Markdown</a>.</p>
+<p>Mathematical expressions can be included in the plot title or axis labels. For more information, see <code>?plotmath</code> or run the demo with <code>demo(plotmath)</code>.</p>
+<p>Here are some quick examples.</p>
+<h3>Example 1</h3>
+<div class="highlight"><pre><span></span>plot<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> main <span class="o">=</span> <span class="kp">expression</span><span class="p">(</span>theta <span class="o">==</span> <span class="m">0</span><span class="p">),</span> ylab <span class="o">=</span> <span class="kp">expression</span><span class="p">(</span>hat<span class="p">(</span><span class="kp">gamma</span><span class="p">)</span> <span class="o">==</span> <span class="m">0</span><span class="p">),</span> 
+    xlab <span class="o">=</span> <span class="kp">expression</span><span class="p">(</span><span class="kp">sum …</span></pre></div></p>
+                            <p class="post-meta">
+                                in <a href="https://leemendelowitz.github.io/blog/category/r.html">R</a> &middot; Tue 15 October 2013
+                            </p>
+                        </header>
+                    </section>
+                    <section class="post">
+                        <header class="post-header">
+                            <h3><a class="post-title" href="https://leemendelowitz.github.io/blog/plotting-with-lattice.html">Plotting with Lattice</a></h3>
+                            <p class="post-meta"><p><a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/lattice_demo.rmd">Download as R Markdown</a>.</p>
+<p>The lattice library is useful for quickly making plots of multivariate data. It's easy to make plots which condition on one or more variables.</p>
+<h3>Load the lattice library</h3>
+<div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>lattice<span class="p">)</span>
+
+<span class="c1"># Ask for general information about the lattice package</span>
+<span class="sb">`?`</span><span class="p">(</span>package<span class="p">,</span> lattice<span class="p">)</span>
+
+<span class="c1"># See what is inside of the …</span></pre></div></p>
+                            <p class="post-meta">
+                                in <a href="https://leemendelowitz.github.io/blog/category/r.html">R</a> &middot; Mon 14 October 2013
+                            </p>
+                        </header>
+                    </section>
+                    <section class="post">
+                        <header class="post-header">
+                            <h3><a class="post-title" href="https://leemendelowitz.github.io/blog/mapply.html">mapply</a></h3>
+                            <p class="post-meta"><!--- mapply -->
+
+<p><a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/mapply.rmd">Download as R Markdown</a>.</p>
+<p><code>mapply</code> gives us a way to call a non-vectorized function in a vectorized way.</p>
+<p>From the R Documentation:</p>
+<div class="highlight"><pre><span></span>mapply is a multivariate version of sapply. mapply applies FUN to
+the first elements of each ... argument, the second elements,
+the third elements, and so on. Arguments are …</pre></div></p>
+                            <p class="post-meta">
+                                in <a href="https://leemendelowitz.github.io/blog/category/r.html">R</a> &middot; Sun 13 October 2013
+                            </p>
+                        </header>
+                    </section>
+                    <section class="post">
+                        <header class="post-header">
+                            <h3><a class="post-title" href="https://leemendelowitz.github.io/blog/r-base-graphics-plotting.html">R Base Graphics Plotting</a></h3>
+                            <p class="post-meta"><!--- R Base Graphics Plotting -->
+
+<p><a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/basePlotting.rmd">Download as R Markdown</a>.</p>
+<h3>Important parameters</h3>
+<ul>
+<li><strong>pch</strong>: plotting symbol</li>
+<li><strong>lty</strong>: line type</li>
+<li><strong>lwd</strong>: line width</li>
+<li><strong>col</strong>: plotting color</li>
+<li><strong>las</strong>: orientation of axis labels </li>
+<li><strong>bg</strong>: background color</li>
+<li><strong>mar</strong>: margin size</li>
+<li><strong>oma</strong>: outer margin size</li>
+<li><strong>mfrow</strong>: number of plots per row, column. Plots filled in row-wise.</li>
+<li><strong>mfcol</strong>: number of plots per row …</li></ul></p>
+                            <p class="post-meta">
+                                in <a href="https://leemendelowitz.github.io/blog/category/r.html">R</a> &middot; Sun 13 October 2013
+                            </p>
+                        </header>
+                    </section>
+                    <section class="post">
+                        <header class="post-header">
+                            <h3><a class="post-title" href="https://leemendelowitz.github.io/blog/tapply-and-split.html">tapply and split</a></h3>
+                            <p class="post-meta"><!--- tapply and split -->
+
+<p><a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/tapply_and_split.rmd">Download as R Markdown</a>.</p>
+<h2>tapply</h2>
+<p>Apply a function over subsets of a vector.</p>
+<h3>Example: Take group means with tapply.</h3>
+<div class="highlight"><pre><span></span>x <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="p">),</span> runif<span class="p">(</span><span class="m">10</span><span class="p">),</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+x
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##  [1] -2.04333  0.72651  1.55476 -0.12411  1.08133 -0.30514  1.38638
+##  [8]  0.35047  0.88147  1 …</pre></div></p>
+                            <p class="post-meta">
+                                in <a href="https://leemendelowitz.github.io/blog/category/r.html">R</a> &middot; Sun 13 October 2013
+                            </p>
+                        </header>
+                    </section>
+<div class="pagination-wrapper content-subhead">
+    <div class="pagination">
+        <div class="pagination-left">
+                &nbsp;
+        </div>
+        <span>Page 1 / 1</span>
+        <div class="pagination-right">
+        </div>
+    </div>
+</div><footer class="footer">
+    <p>&copy; Lee Mendelowitz &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-44545448-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+
+</body>
+</html>

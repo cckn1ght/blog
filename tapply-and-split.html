@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lee On Coding, My blog about coding and stuff.">
+
+        <link rel="alternate"  href="https://leemendelowitz.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" title="Lee On Coding Full Atom Feed"/>
+
+        <title>tapply and split // Lee On Coding // My blog about coding and stuff.</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://leemendelowitz.github.io/blog/theme/css/pure.css">
+    <link rel="stylesheet" href="https://leemendelowitz.github.io/blog/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background: none repeat scroll 0% 0% #3D4F5D">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <img class="avatar" src="https://leemendelowitz.github.io/blog//images/avatar.jpeg">
+                            <h1 class="brand-main"><a href="https://leemendelowitz.github.io/blog">Lee On Coding</a></h1>
+                            <p class="tagline">My blog about coding and stuff.</p>
+                                <p class="social">
+                                    <a href="http://twitter.com/lmendy7">
+                                        <i class="fa fa-twitter fa-3x"></i>
+                                    </a>
+                                    <a href="https://github.com/LeeMendelowitz">
+                                        <i class="fa fa-github fa-3x"></i>
+                                    </a>
+                                </p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>tapply and split</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="https://leemendelowitz.github.io/blog/tag/r.html">R</a>
+                                <a class="post-category" href="https://leemendelowitz.github.io/blog/tag/computing-for-data-analysis.html">Computing For Data Analysis</a>
+                        </p>
+                </header>
+            </section>
+            <!--- tapply and split -->
+
+<p><a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/tapply_and_split.rmd">Download as R Markdown</a>.</p>
+<h2>tapply</h2>
+<p>Apply a function over subsets of a vector.</p>
+<h3>Example: Take group means with tapply.</h3>
+<div class="highlight"><pre><span></span>x <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="p">),</span> runif<span class="p">(</span><span class="m">10</span><span class="p">),</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+x
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##  [1] -2.04333  0.72651  1.55476 -0.12411  1.08133 -0.30514  1.38638
+##  [8]  0.35047  0.88147  1.80250  0.56072  0.54421  0.19270  0.67049
+## [15]  0.83034  0.02640  0.98629  0.11223  0.10747  0.85049  1.37510
+## [22]  0.56575  0.34138  1.01877  1.33956 -0.07667  2.12114  0.70827
+## [29]  0.53336  2.15315
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>f <span class="o">&lt;-</span> <span class="kp">gl</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>  <span class="c1"># Generator factors</span>
+f
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3
+## Levels: 1 2 3
+</pre></div>
+
+
+<p>By default, if the applied function returns a scalar, then tapply
+returns a vector. In this case we are applying the mean function,
+so the output of tapply is a numeric vector.</p>
+<div class="highlight"><pre><span></span><span class="kp">tapply</span><span class="p">(</span>x<span class="p">,</span> f<span class="p">,</span> <span class="kp">mean</span><span class="p">)</span>  <span class="c1"># Take the mean of each group. Returns a vector.</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##      1      2      3 
+## 0.5311 0.4881 1.0080
+</pre></div>
+
+
+<p>Without simplification, tapply always returns a list.</p>
+<div class="highlight"><pre><span></span><span class="kp">tapply</span><span class="p">(</span>x<span class="p">,</span> f<span class="p">,</span> <span class="kp">mean</span><span class="p">,</span> simplify <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## $`1`
+## [1] 0.5311
+## 
+## $`2`
+## [1] 0.4881
+## 
+## $`3`
+## [1] 1.008
+</pre></div>
+
+
+<h3>Example: Find the group range</h3>
+<p>Range returns the minimum and maximum value for each group.
+Note that since the range function returns a vector, tapply returns
+a list.</p>
+<div class="highlight"><pre><span></span><span class="kp">tapply</span><span class="p">(</span>x<span class="p">,</span> f<span class="p">,</span> <span class="kp">range</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## $`1`
+## [1] -2.043  1.803
+## 
+## $`2`
+## [1] 0.0264 0.9863
+## 
+## $`3`
+## [1] -0.07667  2.15315
+</pre></div>
+
+
+<h2>split</h2>
+<p>The split function splits a vector int groups using a factor.
+Using split and then applying a function with lapply produces the same 
+resule as tapply:</p>
+<div class="highlight"><pre><span></span><span class="kp">split</span><span class="p">(</span>x<span class="p">,</span> f<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## $`1`
+##  [1] -2.0433  0.7265  1.5548 -0.1241  1.0813 -0.3051  1.3864  0.3505
+##  [9]  0.8815  1.8025
+## 
+## $`2`
+##  [1] 0.5607 0.5442 0.1927 0.6705 0.8303 0.0264 0.9863 0.1122 0.1075 0.8505
+## 
+## $`3`
+##  [1]  1.37510  0.56575  0.34138  1.01877  1.33956 -0.07667  2.12114
+##  [8]  0.70827  0.53336  2.15315
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kp">lapply</span><span class="p">(</span><span class="kp">split</span><span class="p">(</span>x<span class="p">,</span> f<span class="p">),</span> <span class="kp">mean</span><span class="p">)</span>  <span class="c1"># Instead of tapply</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## $`1`
+## [1] 0.5311
+## 
+## $`2`
+## [1] 0.4881
+## 
+## $`3`
+## [1] 1.008
+</pre></div>
+
+
+<h3>Example: Air Quality by month</h3>
+<div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>datasets<span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>airquality<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 3    12     149 12.6   74     5   3
+## 4    18     313 11.5   62     5   4
+## 5    NA      NA 14.3   56     5   5
+## 6    28      NA 14.9   66     5   6
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>s <span class="o">&lt;-</span> <span class="kp">split</span><span class="p">(</span>airquality<span class="p">,</span> airquality<span class="o">$</span>Month<span class="p">)</span>
+</pre></div>
+
+
+<p><code>s</code> is a list of dataframes split by month:</p>
+<div class="highlight"><pre><span></span><span class="kp">class</span><span class="p">(</span>s<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## [1] &quot;list&quot;
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kp">class</span><span class="p">(</span>s<span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## [1] &quot;data.frame&quot;
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kp">lapply</span><span class="p">(</span>s<span class="p">,</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> <span class="kp">head</span><span class="p">(</span>x<span class="p">,</span> n <span class="o">=</span> <span class="m">2</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## $`5`
+##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 
+## $`6`
+##    Ozone Solar.R Wind Temp Month Day
+## 32    NA     286  8.6   78     6   1
+## 33    NA     287  9.7   74     6   2
+## 
+## $`7`
+##    Ozone Solar.R Wind Temp Month Day
+## 62   135     269  4.1   84     7   1
+## 63    49     248  9.2   85     7   2
+## 
+## $`8`
+##    Ozone Solar.R Wind Temp Month Day
+## 93    39      83  6.9   81     8   1
+## 94     9      24 13.8   81     8   2
+## 
+## $`9`
+##     Ozone Solar.R Wind Temp Month Day
+## 124    96     167  6.9   91     9   1
+## 125    78     197  5.1   92     9   2
+</pre></div>
+
+
+<p>After splitting by month, we can use <code>lapply</code> to take the column means:</p>
+<div class="highlight"><pre><span></span>takeMeans <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> <span class="kp">colMeans</span><span class="p">(</span>x<span class="p">[,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;Ozone&quot;</span><span class="p">,</span> <span class="s">&quot;Solar.R&quot;</span><span class="p">,</span> <span class="s">&quot;Wind&quot;</span><span class="p">)],</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="kp">lapply</span><span class="p">(</span>s<span class="p">,</span> takeMeans<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## $`5`
+##   Ozone Solar.R    Wind 
+##   23.62  181.30   11.62 
+## 
+## $`6`
+##   Ozone Solar.R    Wind 
+##   29.44  190.17   10.27 
+## 
+## $`7`
+##   Ozone Solar.R    Wind 
+##  59.115 216.484   8.942 
+## 
+## $`8`
+##   Ozone Solar.R    Wind 
+##  59.962 171.857   8.794 
+## 
+## $`9`
+##   Ozone Solar.R    Wind 
+##   31.45  167.43   10.18
+</pre></div>
+
+
+<p>Using <code>sapply</code> instead of <code>lapply</code> simplifies the output into a matrix,
+so we can easily see the mean values by month.</p>
+<div class="highlight"><pre><span></span><span class="kp">sapply</span><span class="p">(</span>s<span class="p">,</span> takeMeans<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##              5      6       7       8      9
+## Ozone    23.62  29.44  59.115  59.962  31.45
+## Solar.R 181.30 190.17 216.484 171.857 167.43
+## Wind     11.62  10.27   8.942   8.794  10.18
+</pre></div>
+
+
+<h3>Splitting on more than one level</h3>
+<div class="highlight"><pre><span></span>x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">10</span><span class="p">)</span>
+f1 <span class="o">&lt;-</span> <span class="kp">gl</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>  <span class="c1"># Create a factor with two levels</span>
+f2 <span class="o">&lt;-</span> <span class="kp">gl</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>  <span class="c1"># Create a factor with five levels</span>
+str<span class="p">(</span>f1<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##  Factor w/ 2 levels &quot;1&quot;,&quot;2&quot;: 1 1 1 1 1 2 2 2 2 2
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>str<span class="p">(</span>f2<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##  Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 2 2 3 3 4 4 5 5
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kp">interaction</span><span class="p">(</span>f1<span class="p">,</span> f2<span class="p">)</span>  <span class="c1"># Compute a factor with 10 levels, which is the interaction of the two factors</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>##  [1] 1.1 1.1 1.2 1.2 1.3 2.3 2.4 2.4 2.5 2.5
+## Levels: 1.1 2.1 1.2 2.2 1.3 2.3 1.4 2.4 1.5 2.5
+</pre></div>
+
+
+<p>Note that some levels of the interaction are empty for our data vector <code>x</code>. For example, none of the samples in <code>x</code> have level 2.1.</p>
+<p>We can use multiple factor levels with <code>split</code> by passing the interaction
+factor. Instead of calling <code>interaction</code> explicitly, if we pass the factors in a list, the <code>interaction</code> function is automatically called:</p>
+<div class="highlight"><pre><span></span>str<span class="p">(</span><span class="kp">split</span><span class="p">(</span>x<span class="p">,</span> <span class="kt">list</span><span class="p">(</span>f1<span class="p">,</span> f2<span class="p">)))</span>  <span class="c1"># Automatically calls interaction(f1,f2)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## List of 10
+##  $ 1.1: num [1:2] 0.993 0.939
+##  $ 2.1: num(0) 
+##  $ 1.2: num [1:2] 1.092 -0.382
+##  $ 2.2: num(0) 
+##  $ 1.3: num -0.985
+##  $ 2.3: num 1.53
+##  $ 1.4: num(0) 
+##  $ 2.4: num [1:2] -0.066 -1.64
+##  $ 1.5: num(0) 
+##  $ 2.5: num [1:2] 0.452 -1.324
+</pre></div>
+
+
+<p>Note that some levels are empty, but they still appear in list output by
+<code>split</code>.  Empty levels can be dropped by passing  <code>drop = TRUE</code>.</p>
+<div class="highlight"><pre><span></span>str<span class="p">(</span><span class="kp">split</span><span class="p">(</span>x<span class="p">,</span> <span class="kt">list</span><span class="p">(</span>f1<span class="p">,</span> f2<span class="p">),</span> drop <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>## List of 6
+##  $ 1.1: num [1:2] 0.993 0.939
+##  $ 1.2: num [1:2] 1.092 -0.382
+##  $ 1.3: num -0.985
+##  $ 2.3: num 1.53
+##  $ 2.4: num [1:2] -0.066 -1.64
+##  $ 2.5: num [1:2] 0.452 -1.324
+</pre></div>
+            <a href="#" class="go-top">Go Top</a>
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "leeoncoding"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+<footer class="footer">
+    <p>&copy; Lee Mendelowitz &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-44545448-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+
+</body>
+</html>

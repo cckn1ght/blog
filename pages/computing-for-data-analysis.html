@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lee On Coding, My blog about coding and stuff.">
+
+        <link rel="alternate"  href="https://leemendelowitz.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" title="Lee On Coding Full Atom Feed"/>
+
+        <title>Computing For Data Analysis // Lee On Coding // My blog about coding and stuff.</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://leemendelowitz.github.io/blog/theme/css/pure.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background: none repeat scroll 0% 0% #3D4F5D">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <img class="avatar" src="https://leemendelowitz.github.io/blog//images/avatar.jpeg">
+                            <h1 class="brand-main"><a href="https://leemendelowitz.github.io/blog">Lee On Coding</a></h1>
+                            <p class="tagline">My blog about coding and stuff.</p>
+                                <p class="social">
+                                    <a href="http://twitter.com/lmendy7">
+                                        <i class="fa fa-twitter fa-3x"></i>
+                                    </a>
+                                    <a href="https://github.com/LeeMendelowitz">
+                                        <i class="fa fa-github fa-3x"></i>
+                                    </a>
+                                </p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <h1 class="content-subhead">Computing For Data Analysis</h1>
+            <p><p>These are select lecture notes that I have written for the Coursera course
+<a href="https://www.coursera.org/course/compdata">Comuting for Data Analysis</a>
+taught by <a href="http://www.biostat.jhsph.edu/~rpeng/">Roger Peng</a> in September 2013.
+This course is about learning how to use the R programming language for data analysis.</p>
+<p>The notes are written in R Markdown and compiled into regular markdown using
+the <a href="http://yihui.name/knitr/">knitr</a> library. You can download each article
+as R Markdown so you can interactively run the R code chunks in RStudio.
+For more information on using R Markdown with RStudio, read <a href="http://www.rstudio.com/ide/docs/authoring/using_markdown">this</a>.</p>
+<p><strong> Week 2 </strong></p>
+<ul>
+<li><a href="https://leemendelowitz.github.io/blog/tapply-and-split.html">tapply and split</a>
+  [<a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/tapply_and_split.rmd">R Markdown</a>]</li>
+<li><a href="https://leemendelowitz.github.io/blog/mapply.html">mapply</a>
+  [<a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/mapply.rmd">R Markdown</a>]</li>
+</ul>
+<p><strong> Week 3 </strong></p>
+<ul>
+<li><a href="https://leemendelowitz.github.io/blog/r-base-graphics-plotting.html">Base Graphics Plotting</a>
+  [<a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/basePlotting.rmd">R Markdown</a>]</li>
+<li><a href="https://leemendelowitz.github.io/blog/plotting-with-lattice.html">Lattice Plotting</a>
+  [<a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/lattice_demo.rmd">R Markdown</a>]</li>
+<li><a href="https://leemendelowitz.github.io/blog/mathematical-expressions-in-plots.html">Mathematical expressions in plots</a>
+  [<a href="https://leemendelowitz.github.io/blog/computing_for_data_analysis/rmarkdown/plotmath.rmd">R Markdown</a>]</li>
+</ul></p>
+
+
+<footer class="footer">
+    <p>&copy; Lee Mendelowitz &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-44545448-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+
+</body>
+</html>
