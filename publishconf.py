@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'https://cck1nght.github.io/blog'
+SITEURL = 'http://qhsong.me/blog/'
 RELATIVE_URLS = False
 
 
@@ -22,9 +22,9 @@ def make_abs_url(v):
     print('Making absolute URL: ', newval)
     return newval
 
+
 PROFILE_IMG_URL = make_abs_url(PROFILE_IMG_URL)
 COVER_IMG_URL = make_abs_url(COVER_IMG_URL)
-
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 

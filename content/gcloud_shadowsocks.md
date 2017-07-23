@@ -52,7 +52,7 @@ Summary:  使用 gcloud 搭建免费一年的高速 shadowsocks 服务
 接下来就可以启动服务了。
 
     :::bash
-    ssserver -p 8443 -k password -m aes-256-cfb --user nobody -d start
+    sudo ssserver -p 8443 -k password -m aes-256-cfb --user nobody -d start
 
 这条命令中，`-p` 之后的数字表明服务启动的端口，例子里是8443，`-k` 之后的信息是该服务的密码，可以修改成自己喜欢的密码。`-m` 代表的是 shadowsocks 加密方式，推荐使用`aes-256-cfb`。这三个信息我们后面还会用到，所以最好记录一下。最后的几个参数是为了让服务在后台运行，避免 SSH 连接超时自动断开服务。
 

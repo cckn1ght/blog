@@ -11,8 +11,8 @@ TIMEZONE = 'America/Chicago'
 DEFAULT_LANG = u'en'
 
 GOOGLE_ANALYTICS = "UA-103006260-1"
-THEME = "pure-single"
-ARTICLE_EXCLUDES = ['pages', 'computing_for_data_analysis/rmarkdown']
+THEME = "/Users/qhsong/blog/pure-single"
+ARTICLE_EXCLUDES = ['pages']
 STATIC_PATHS = ['images', 'gcloud']
 
 TAGLINE = ""
@@ -26,6 +26,12 @@ DISPLAY_PAGES_ON_MENU = False
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+
+# metadata generation
+DEFAULT_DATE = 'fs'
+USE_FOLDER_AS_CATEGORY = True
+LOAD_CONTENT_CACHE = False
+SUMMARY_MAX_LENGTH = 50
 
 # Blogroll
 LINKS = ()
