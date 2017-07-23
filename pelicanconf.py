@@ -16,7 +16,7 @@ ARTICLE_EXCLUDES = ['pages', 'computing_for_data_analysis/rmarkdown']
 STATIC_PATHS = ['images', 'gcloud']
 
 TAGLINE = ""
-PROFILE_IMG_URL = "/images/avatar.jpg"
+PROFILE_IMG_URL = "images/avatar.jpg"
 COVER_IMG_URL = ""
 
 
