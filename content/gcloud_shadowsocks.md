@@ -1,6 +1,6 @@
 Title: 使用 gcloud 搭建免费一年的高速 shadowsocks 服务
 Date: 2017-7-23 10:40
-Slug: build a one-year-free shadowsocks service with gcloud
+Slug: gcloud_shadowsocks
 Category: misc
 Tags: misc
 Author: Qunhao Song
