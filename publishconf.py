@@ -18,7 +18,7 @@ def make_abs_url(v):
     newval =  SITEURL.rstrip('/') + '/' + v
   else:
     newval =  ''
-  print 'Making absolute URL: ', newval
+  print('Making absolute URL: ', newval)
   return newval
 
 PROFILE_IMG_URL = make_abs_url(PROFILE_IMG_URL)

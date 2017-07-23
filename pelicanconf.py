@@ -2,25 +2,23 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Lee Mendelowitz'
-SITENAME = u'Lee On Coding'
+AUTHOR = u'Qunhao Song'
+SITENAME = u'Pulp Blog'
 SITEURL = 'http://localhost:8000'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'America/Chicago'
 
 DEFAULT_LANG = u'en'
 
-GOOGLE_ANALYTICS = "UA-44545448-1"
+GOOGLE_ANALYTICS = "UA-103006260-1"
 THEME = "pure-single"
 ARTICLE_EXCLUDES = ['pages', 'computing_for_data_analysis/rmarkdown']
-STATIC_PATHS = ['images', 'computing_for_data_analysis/figure/',
-                'computing_for_data_analysis/rmarkdown/',
-                'code']
+STATIC_PATHS = ['images', 'gcloud']
 
-TAGLINE = "My blog about coding and stuff."
-PROFILE_IMG_URL = "/images/avatar.jpeg"
+TAGLINE = ""
+PROFILE_IMG_URL = "/images/avatar.jpg"
 COVER_IMG_URL = ""
-# COVER_IMG_URL = "/images/ss3.psd.png"
+
 
 DISPLAY_PAGES_ON_MENU = False
 
@@ -33,16 +31,16 @@ TRANSLATION_FEED_ATOM = None
 LINKS = ()
 
 # Social widget
-SOCIAL = (('twitter', 'http://twitter.com/lmendy7'),
-          ('github', 'https://github.com/LeeMendelowitz'),)
-TWITTER_USERNAME = "lmendy7"
-GITHUB_URL = "https://github.com/LeeMendelowitz/blog"
-DISQUS_SITENAME = "leeoncoding"
+SOCIAL = (('twitter', 'http://twitter.com/qhs0ng'),
+          ('github', 'https://github.com/cckn1ght'),)
+TWITTER_USERNAME = "qhs0ng"
+GITHUB_URL = "https://github.com/cckn1ght/blog"
+DISQUS_SITENAME = "the-pulp-blog"
 
 DEFAULT_PAGINATION = 10
-
+PLUGIN_PATHS = ['/Users/qhsong/pelican/pelican-plugins']
 PLUGINS = [
-  'pelican_gist'
+    'pelican_gist'
 ]
 
 # Uncomment following line if you want document-relative URLs when developing
