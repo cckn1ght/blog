@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Pulp Blog - misc</title><link href="http://cckn1ght.github.io/" rel="alternate"></link><link href="http://cckn1ght.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://cckn1ght.github.io/</id><updated>2017-07-23T10:40:00-05:00</updated><entry><title>使用 gcloud 搭建免费一年的高速 shadowsocks 服务</title><link href="http://cckn1ght.github.io/gcloud_shadowsocks.html" rel="alternate"></link><published>2017-07-23T10:40:00-05:00</published><updated>2017-07-23T10:40:00-05:00</updated><author><name>Qunhao Song</name></author><id>tag:cckn1ght.github.io,2017-07-23:/gcloud_shadowsocks.html</id><summary type="html">&lt;p&gt;使用 gcloud 搭建免费一年的高速 shadowsocks 服务&lt;/p&gt;</summary><content type="html">&lt;p&gt;由于购买的 shadowsocks 服务不是很稳定，偶尔会抽风，速度也不可观，因此萌发了自己搭建 shadowsocks 服务的想法。正好发现 gcloud 提供免费一年的服务试用，所以我们可以使用 google 的云服务器来搭建自己的 shadowsocks 服务。测试之后发现结果确实比购买的服务好很多，速度可以支持 youtube 以1080画质稳定播放视频。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Pulp Blog - misc</title><link href="http://qhsong.me/blog/" rel="alternate"></link><link href="http://qhsong.me/blog/feeds/misc.atom.xml" rel="self"></link><id>http://qhsong.me/blog/</id><updated>2017-07-23T10:40:00-05:00</updated><entry><title>使用 gcloud 搭建免费一年的高速 shadowsocks 服务</title><link href="http://qhsong.me/blog/gcloud_shadowsocks.html" rel="alternate"></link><published>2017-07-23T10:40:00-05:00</published><updated>2017-07-23T10:40:00-05:00</updated><author><name>Qunhao Song</name></author><id>tag:qhsong.me,2017-07-23:/blog/gcloud_shadowsocks.html</id><summary type="html">&lt;p&gt;使用 gcloud 搭建免费一年的高速 shadowsocks 服务&lt;/p&gt;</summary><content type="html">&lt;p&gt;由于购买的 shadowsocks 服务不是很稳定，偶尔会抽风，速度也不可观，因此萌发了自己搭建 shadowsocks 服务的想法。正好发现 gcloud 提供免费一年的服务试用，所以我们可以使用 google 的云服务器来搭建自己的 shadowsocks 服务。测试之后发现结果确实比购买的服务好很多，速度可以支持 youtube 以1080画质稳定播放视频。&lt;/p&gt;
 &lt;p&gt;所需条件：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;需要一个 google 账号。&lt;/li&gt;
@@ -8,7 +8,7 @@
 &lt;/ol&gt;
 &lt;p&gt;首先访问 https://console.cloud.google.com，并登陆 google 账户。
 可以看到 gcloud 的优惠信息展示在页面最上面。
-&lt;img alt="Free Trail" src="http://cckn1ght.github.io/gcloud/free_trail.png"&gt;&lt;/p&gt;
+&lt;img alt="Free Trail" src="http://qhsong.me/blog/gcloud/free_trail.png"&gt;&lt;/p&gt;
 &lt;p&gt;点击 SIGN UP FOR FREE TRAIL 的按钮然后选择同意服务来下一步。
 填写地址和信用卡信息，按 google 的说法，即使你用完了预赠的300美元，google 也不会在你主动给出允许之前扣你的信用卡，所以即使是服务到期或者花完了免费的额度也不用担心。填完之后就可以开启免费服务。&lt;/p&gt;
 &lt;p&gt;然后可以看到欢迎信息，如果你想更全面地了解一下 gcloud，可以点左边的 TOUR THE CONSOLE, 不然就点右边的 GOT IT.&lt;/p&gt;
