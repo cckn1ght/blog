@@ -31,7 +31,7 @@
 
 
 &lt;p&gt;接下来就可以启动服务了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssserver -p &lt;span class="m"&gt;8443&lt;/span&gt; -k password -m aes-256-cfb --user nobody -d start
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ssserver -p &lt;span class="m"&gt;8443&lt;/span&gt; -k password -m aes-256-cfb --user nobody -d start
 &lt;/pre&gt;&lt;/div&gt;
 
 
