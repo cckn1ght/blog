@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pulp Blog, ">
+
+        <link rel="alternate"  href="https://leemendelowitz.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" title="Pulp Blog Full Atom Feed"/>
+
+        <title>使用 gcloud 搭建免费一年的高速 shadowsocks 服务 // Pulp Blog // </title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://leemendelowitz.github.io/blog/theme/css/pure.css">
+    <link rel="stylesheet" href="https://leemendelowitz.github.io/blog/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background: none repeat scroll 0% 0% #3D4F5D">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <img class="avatar" src="https://leemendelowitz.github.io/blog//images/avatar.jpg">
+                            <h1 class="brand-main"><a href="https://leemendelowitz.github.io/blog">Pulp Blog</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="http://twitter.com/qhs0ng">
+                                        <i class="fa fa-twitter fa-3x"></i>
+                                    </a>
+                                    <a href="https://github.com/cckn1ght">
+                                        <i class="fa fa-github fa-3x"></i>
+                                    </a>
+                                </p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>使用 gcloud 搭建免费一年的高速 shadowsocks 服务</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="https://leemendelowitz.github.io/blog/tag/misc.html">misc</a>
+                        </p>
+                </header>
+            </section>
+            <p>由于购买的 shadowsocks 服务不是很稳定，偶尔会抽风，速度也不可观，因此萌发了自己搭建 shadowsocks 服务的想法。正好发现 gcloud 提供免费一年的服务试用，所以我们可以使用 google 的云服务器来搭建自己的 shadowsocks 服务。测试之后发现结果确实比购买的服务好很多，速度可以支持 youtube 以1080画质稳定播放视频。</p>
+<p>所需条件：</p>
+<ol>
+<li>需要一个 google 账号。</li>
+<li>目前能访问 gcloud 网站。（可以使用 hosts 文件，购买的 shadowsocks 服务或者 VPN）</li>
+<li>需要一张 Visa 或者 Master 的信用卡，信用卡不会被主动扣费，只是激活免费账户是需要该信息，一年免费期到了之后取消服务即可。</li>
+</ol>
+<p>首先访问 https://console.cloud.google.com，并登陆 google 账户。
+可以看到 gcloud 的优惠信息展示在页面最上面。
+<img alt="Free Trail" src="https://leemendelowitz.github.io/blog/gcloud/free_trail.png"></p>
+<p>点击 SIGN UP FOR FREE TRAIL 的按钮然后选择同意服务来下一步。
+填写地址和信用卡信息，按 google 的说法，即使你用完了预赠的300美元，google 也不会在你主动给出允许之前扣你的信用卡，所以即使是服务到期或者花完了免费的额度也不用担心。填完之后就可以开启免费服务。</p>
+<p>然后可以看到欢迎信息，如果你想更全面地了解一下 gcloud，可以点左边的 TOUR THE CONSOLE, 不然就点右边的 GOT IT.</p>
+<p>在左边的导航栏里找到 Compute Engine, 鼠标移上去之后在新出现的框内选择 VM Instances。</p>
+<p><img src="gcloud/vm.png" alt="VM" style="width:70%;display:block;margin:auto;"></p>
+<p>新的页面会让你选择或新建一个 Project, 点击新建即可，等待一段时间之后可以看到如下页面。</p>
+<p><img src="gcloud/create_vm.png" alt="VM" style="width:70%;display:block;margin:auto;"></p>
+<p>点击 create。
+这时候我们需要对新的云服务器进行配置。名称用默认的就可以。Zone 的选择的话，按网上的一些说法，选择离所在地区比较近的区域可以让延迟更小，但是我自己并没有做过对比，有兴趣对比的同学可以把结果发到底下评论区。这边我们可以选择最上面的 asia-east1, a b c 当中的任意一个。为了方便起见，我在 Machine Type 中选择了1 vCPU，选完之后可以看到对应的预计花费，28.5美元一个月，一年的花费超过了300美元。因为我们赠送的300美元必须要在第一年内使用完，因此可以点击 Customize 手动的调整一下机器的内存大小，使得每个月的预计花费在25美元左右。Boot disk 我们选择 Centos 7。剩下的就按默认配置选择。</p>
+<p><img src="gcloud/create_instance.png" alt="VM" style="width:70%;display:block;margin:auto;"></p>
+<p>创建完之后我们点击这个 instance 对应的 SSH 按钮连接。
+进入命令行之后首先输入以下命令安装 pip。</p>
+<div class="highlight"><pre><span></span>sudo yum install -y python-pip
+</pre></div>
+
+
+<p>然后安装 shadowsocks。</p>
+<div class="highlight"><pre><span></span>sudo pip install shadowsocks
+</pre></div>
+
+
+<p>接下来就可以启动服务了。</p>
+<div class="highlight"><pre><span></span>ssserver -p <span class="m">8443</span> -k password -m aes-256-cfb --user nobody -d start
+</pre></div>
+
+
+<p>这条命令中，<code>-p</code> 之后的数字表明服务启动的端口，例子里是8443，<code>-k</code> 之后的信息是该服务的密码，可以修改成自己喜欢的密码。<code>-m</code> 代表的是 shadowsocks 加密方式，推荐使用<code>aes-256-cfb</code>。这三个信息我们后面还会用到，所以最好记录一下。最后的几个参数是为了让服务在后台运行，避免 SSH 连接超时自动断开服务。</p>
+<p>还剩最后一步我们的服务器就搭建完成了。先不要关闭命令行界面，回到 gcloud 的主页面，选择左上角的三横线，然后选择 Networking，然后选择 Firewall Rules。</p>
+<p><img src="gcloud/firewall.png" alt="VM" style="width:70%;display:block;margin:auto;"></p>
+<p>进入页面之后点击 CREATE FIREWALL RULE。
+给这个防火墙规则一个名字，shadowsocks。然后在 Targets 选项中选择 <code>All instances in the network</code>，在 Source IP Range 这个框里填上 <code>0.0.0.0/0</code>，表明该规则运行任何 IP 地址访问。最后在 Protocols and ports 里面选择 Specified protocols and ports，下面的输入框填入 <code>tcp:8443</code>，这里的8443代表之前我们开启服务所用的端口，如果你上面开启服务用的是另一个，那就填那一个端口而不是8443。其他的配置都按默认。</p>
+<p><img src="gcloud/firewall2.png" alt="firewall2" style="width:70%;display:block;margin:auto;"></p>
+<p>这个时候我们再回 instance 的页面看一眼服务器的外部地址，就大功告成了。</p>
+<p><img src="gcloud/back_to_instance.png" alt="instance" style="width:70%;display:block;margin:auto;">
+<img src="gcloud/external_ip.png" alt="ip" style="width:70%;display:block;margin:auto;"></p>
+<p>到这里服务器端的配置就全部完成了，我们需要记录四个东西，以便在客户端连接服务器：</p>
+<ol>
+<li>最后一张图片显示的服务器外部地址 （如<code>10.199.183.183</code>）</li>
+<li>启用服务的端口号 （如<code>8443</code>）</li>
+<li>服务密码 （如<code>password</code>）</li>
+<li>加密方式 （如<code>aes-256-cfb</code>）</li>
+</ol>
+<h3>客户端</h3>
+<p>客户端的使用比较简单，MacOS 客户端推荐使用 <a href="https://github.com/shadowsocks/ShadowsocksX-NG">shadowsocksX-NG</a>，iOS端推荐使用免费的 App: <a href="https://itunes.apple.com/us/app/wingy-shadow-vpn-for-http-socks5-ss/id1148026741?mt=8">Wingy</a>,配置都是图形界面化的，类型选择 shadowsocks(R)，然后将上面提到的4段信息输入即可。
+我自己没有在 Windows 上测试过，关于 Windows 的客户端的安装和配置可以看这里 <a href="https://github.com/shadowsocks/shadowsocks-windows/wiki/Shadowsocks-Windows-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">Windwos客户端</a>。</p>
+            <a href="#" class="go-top">Go Top</a>
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "the-pulp-blog"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+<footer class="footer">
+    <p>&copy; Qunhao Song &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-103006260-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+
+</body>
+</html>
