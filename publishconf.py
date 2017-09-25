@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://qhsong.me/blog/'
+SITEURL = 'http://cckn1ght.github.io/blog'
 RELATIVE_URLS = False
 
 
